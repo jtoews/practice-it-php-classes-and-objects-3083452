@@ -3,8 +3,8 @@ class Member
 {
     public string $username;
     public string $role;
-    static string $ADMIN_ROLE = "admin";
-    static string $MEMBER_ROLE = "member";
+    const ADMIN_ROLE = 'admin';
+    const MEMBER_ROLE = "member";
 
     public function addMemberToWorkspace(Workspace $workspace)
     {
