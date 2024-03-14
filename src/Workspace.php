@@ -2,9 +2,15 @@
 
 class Workspace
 {
-    private string $url;
+   // private string $url;
     public array $chats = [];
     public array $members = [];
+
+    public function __construct(public string $url, Member $admin)
+    {
+        $this->setUrl($url);
+        $this->setAdmin($admin);
+    }
 
     public static string $urlDomain = '.flack.app';
 
@@ -42,7 +48,7 @@ class Workspace
     {
         return in_array(
             $member->username,
-            array_map(fn($member) => $member->username, $this->members)
+            array_map(fn ($member) => $member->username, $this->members)
         );
     }
 }

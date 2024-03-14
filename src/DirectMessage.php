@@ -1,0 +1,7 @@
+class DirectMessage extends Chat {
+
+    
+
+
+
+}
