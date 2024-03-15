@@ -6,5 +6,6 @@ class Chat
 
     public function __construct(public string $title)
     {
+        
     }
 }
