@@ -1,10 +1,10 @@
-<? php
+<?php
 
-class Channel extends Chat {
-public function getMessages()
+class Channel extends Chat
 {
-return $this->messages;
-}
 
-
+    public function getMessages()
+    {
+        return $this->messages;
+    }
 }

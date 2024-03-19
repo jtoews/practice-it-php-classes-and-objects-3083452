@@ -55,18 +55,29 @@ class Member
         // $message->author = $this->username;
         // $message->date = date('m/d/Y');
 
-        $chat->messages[] = $message;
+        $chat->addMessage($message);
         echonl($chat, TRUE);
     }
 
-    public function postMessageToChannel(string $content, Channel $channel)
+    public function postMessageToDirectMessage(string $content, DirectMessage $directMessage)
     {
+
+        if (!$directMessage->hasMember($this)) {
+            echonl('Member must belong to ' . $directMessage->getTitle() . ' to post a direct message');
+            return;
+        }
+        echo "Member: directMessage does have " . $this->username . "\n";
+        echo "Member: adding message " . $content . "\n";
         $message = new Message($content, $this->username, date('m/d/Y'));
         // $message->content = $content;
         // $message->author = $this->username;
         // $message->date = date('m/d/Y');
+        echo "Member: adding message to messages \n";
 
-        $chat->messages[] = $message;
-        echonl($chat, TRUE);
+        // this doesn't work $directMessage->getMessages($this)[] = $message;
+        $directMessage->addMessage($message);
+        echo "Member: message added \n";
+        echonl($directMessage->getMessages($this), TRUE);
+        echo "Member: done postMessageToDirectMessage\n";
     }
 }
